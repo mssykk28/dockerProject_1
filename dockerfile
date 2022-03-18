@@ -10,5 +10,3 @@ COPY Pipfile ./
 COPY Pipfile.lock ./
 
 RUN pipenv install --system
-
-CMD ["python", "app.py"]

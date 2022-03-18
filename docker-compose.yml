@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  api:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    volumes:
+      - .:/code
+    working_dir: /code
+    env_file:
+      - .env
+    ports:
+     - "15000:5000"
+    command:
+      - "python"
+      - "-m"
+      - "flask"
+      - "run"
+      - "--host=0.0.0.0"
