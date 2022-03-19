@@ -1,5 +1,20 @@
 version: "3.8"
 services:
+  db:
+    image: mysql:5.7
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: mysql
+      MYSQL_DATABASE: dockerProject_db1
+      MYSQL_PASSWORD: password
+    ports:
+      - "13306:3306"
+    command: >
+      mysqld 
+      --character-set-server=utf8
+      --collation-server=utf8_unicode_ci
+
   api:
     container_name: "api"
     build:
@@ -18,3 +33,5 @@ services:
       - "flask"
       - "run"
       - "--host=0.0.0.0"
+    depends_on:
+      - db
